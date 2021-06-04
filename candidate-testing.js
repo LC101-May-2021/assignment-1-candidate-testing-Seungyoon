@@ -57,25 +57,3 @@ module.exports = {
   gradeQuiz: gradeQuiz,
   runProgram: runProgram
 };
-
-function runProgram() {
-  askForName();
-  // TODO 1.1c: Ask for candidate's name //
-  console.log("Welcome " + candidateName +"!");
-  askQuestion();
-  gradeQuiz(this.candidateAnswers);
-}
-
-// Don't write any code below this line //
-// And don't change these or your program will not run as expected //
-module.exports = {
-  candidateName: candidateName,
-  question: question,
-  correctAnswer: correctAnswer,
-  candidateAnswer: candidateAnswer,
-  questions: questions,
-  correctAnswers: correctAnswers,
-  candidateAnswers: candidateAnswers,
-  gradeQuiz: gradeQuiz,
-  runProgram: runProgram
-};
