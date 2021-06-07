@@ -1,47 +1,67 @@
 const input = require('readline-sync');
 
-let candidateName = input.question("What is your name?");
-console.log(`\nCandidate Name: ${candidateName}`);
+let candidateName = "";
+let candidateAnswers = [];
+let correctAnswers = 0;
+let question = "Who was the first American woman in space? ";
+let correctAnswer = "Sally Ride";
+let candidateAnswer = "" ;
 
-let question = [
-  "1) True or false: 5000 meters = 5 kilometers.",
-  "2) (5 + 3)/2 * 10 = ?",
-  "3) Given the array [8, \"Orbit\", \"Trajectory\", 45], what entry is at index 2?",
-  "4) Who was the first American woman in space?",
-  "5) What is the minimum crew size for the International Space Station (ISS)?"
+let questions = [
+  "1) Who was the first American woman in space? ",
+  "2) True or false: 5000 meters = 5 kilometers. ",
+  "3) (5 + 3)/2 * 10 = ? ",
+  "4) Given the array [8, \"Orbit\", \"Trajectory\", 45], what entry is at index 2? ",
+  "5) What is the minimum crew size for the ISS? "
   ]
   
-let correctAnwer = [
-  "True",
+let answerKeys = [
+  "Sally Ride",
+  "true",
   40,
   "Trajectory",
-  "Sally Ride",
   3
   ]
 
-let userAnswers = [];
-let correctAnswers = 0;
 
-for (let i = 0; i < question.length; i++) {
+function askForName() {
   
-console.log(question[i]);
-userAnswers.push(input.question(question[i]));
+let candidateName = input.question("What is your name? ");
+console.log(`\nCandidate Name: ${candidateName}`);
 
-console.log(`Your Answer: ${userAnswers[i]}`);
-console.log(`Correct Answer: ${correctAnwer[i]}\n`);
+}
 
-if (userAnswers[i].toString().toLowerCase() === correctAnwer[i].toString().toLowerCase()) {
+function askQuestion() {
+
+for (let i = 0; i < questions.length; i++) {
+
+candidateAnswers.push(input.question(questions[i]));
+
+console.log(`Your Answer: ${candidateAnswers[i]}`);
+console.log(`Correct Answer: ${answerKeys[i]}\n`);
+
+if (candidateAnswers[i].toString().toLowerCase() === answerKeys[i].toString().toLowerCase()) {
   correctAnswers++;
 }
 }
+}
 
-let score = correctAnswers / question.length * 100;
+function gradeQuiz() {
+
+let score = correctAnswers / questions.length * 100;
 console.log(`>>> Overall Grade: ${score}% (${correctAnswers} of 5 responses correct) <<<`);
 
 if (score >= 80) {
   console.log(">>> Status: PASS <<<");
 } else {
   console.log(">>> Status: FAILED <<<");
+}
+}
+
+function runProgram() {
+  askForName();
+  askQuestion();
+  gradeQuiz();
 }
 
 // Don't write any code below this line //
