@@ -61,7 +61,7 @@ if (score >= 80) {
 function runProgram() {
   askForName();
   askQuestion();
-  gradeQuiz();
+  gradeQuiz(this.candidateAnswers);
 }
 
 // Don't write any code below this line //
